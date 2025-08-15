@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>肖平 博士 - 个人学术主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c6ecb;
+            --primary-light: rgba(44, 110, 203, 0.1);
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --light-gray: #f8f9fa;
+            --mid-gray: #e9ecef;
+            --dark-gray: #6c757d;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: var(--light-gray);
+        }
+        
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: center;
+            padding: 0 20px;
+        }
+        
+        .navbar a {
+            display: inline-block;
+            padding: 15px 20px;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .navbar a:hover {
+            color: var(--primary-color);
+        }
+        
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        
+        /* 头部样式 */
+        header {
+            padding: 200px 80px 80px;
+            background: url('images/微信圖片_20240926234018.jpg') center/cover no-repeat;
+            text-align: center;
+            margin-bottom: 50px;
+            border-radius: 0 0 12px 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(19, 19, 19, 0);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 2.8rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .contact-info {
+            color: var(--secondary-color);
+            margin: 8px 0;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .contact-info i {
+            color: var(--primary-color);
+            width: 20px;
+        }
+        
+        /* 主要内容区域 */
+        main {
+            padding: 0 20px;
+        }
+        
+        section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 40%;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: -3px;
+            left: 0;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 25px 0 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--mid-gray);
+            border-radius: 4px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 40px;
+            padding-right: 20px;
+        }
+        
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+            display: inline-block;
+            background-color: var(--primary-light);
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+        
+        .timeline-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .timeline-content p {
+            margin-bottom: 8px;
+        }
+        
+        .timeline-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* 技能部分 */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .skill-category {
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-category h3 i {
+            font-size: 1.4rem;
+        }
+        
+        .skill-category ul {
+            padding-left: 20px;
+        }
+        
+        .skill-category li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 8px;
+        }
+        
+        .skill-category li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+        }
+        
+        /* 研究内容 */
+        .research-list {
+            padding-left: 0;
+        }
+        
+        .research-item {
+            background-color: var(--light-gray);
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            list-style: none;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+        
+        .research-item:hover {
+            border-left-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        /* 奖项和会议 */
+        .award-list, .conference-list {
+            padding-left: 0;
+        }
+        
+        .award-item, .conference-item {
+            list-style: none;
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--mid-gray);
+            transition: var(--transition);
+            display: flex;
+            gap: 15px;
+        }
+        
+        .award-item:hover, .conference-item:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+        
+        .award-item i, .conference-item i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            min-width: 30px;
+            margin-top: 3px;
+        }
+        
+        /* 论文部分 */
+        .publications {
+            margin-top: 20px;
+        }
+        
+        .publication {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .publication:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .publication p {
+            margin: 0;
+            line-height: 1.8;
+        }
+        
+        .publication em {
+            color: var(--dark-gray);
+        }
+        
+        .publication .pub-meta {
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            margin-top: 8px;
+        }
+        
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 15px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background-color: var(--primary-light);
+            transition: var(--transition);
+        }
+        
+        .pub-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* 项目部分 */
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .project-item {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .project-date {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .project-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .project-funding {
+            font-size: 0.95rem;
+            color: var(--dark-gray);
+            background-color: rgba(0,0,0,0.03);
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .navbar a {
+                padding: 12px 10px;
+                font-size: 0.9rem;
+            }
+            
+            header {
+                padding: 120px 20px 60px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .title {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 30px 20px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .timeline::before {
+                left: 10px;
+            }
+            
+            .timeline-item {
+                padding-left: 30px;
+            }
+            
+            .skills-container, .project-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .publication {
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .navbar-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .navbar a {
+                padding: 10px 8px;
+                font-size: 0.85rem;
+            }
+            
+            .contact-info {
+                font-size: 0.9rem;
+                flex-wrap: wrap;
+            }
+            
+            .award-item, .conference-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .award-item i, .conference-item i {
+                margin-bottom: 5px;
+                margin-top: 0;
+            }
+        }
+        
+        /* 滚动动画 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section {
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
+        section:nth-child(7) { animation-delay: 0.7s; }
+        section:nth-child(8) { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#education">教育背景</a>
+            <a href="#work">工作经历</a>
+            <a href="#skills">专业技能</a>
+            <a href="#research">研究内容</a>
+            <a href="#awards">奖项证书</a>
+            <a href="#conferences">学术会议</a>
+            <a href="#publications">代表性论文</a>
+            <a href="#projects">科研项目</a>
+        </div>
+    </nav>
+
+    <!-- 头部信息 -->
+    <header>
+        <div class="header-content">
+            <h1>肖平 博士</h1>
+            <div class="title">西南林业大学 | 动物科学系</div>
+            <div class="contact-info">
+                <i class="fas fa-birthday-cake"></i>
+                <span>出生年月: 1994年12月 | 学历: 博士研究生</span>
+            </div>
+            <div class="contact-info">
+                <i class="fas fa-envelope"></i>
+                <span>ping.xiao@swfu.edu.cn</span>
+            </div>
+            <div class="contact-info">
+                <i class="fas fa-phone"></i>
+                <span>18227586739</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 教育背景 -->
+        <section id="education">
+            <h2>教育背景</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2019.08-2022.12</div>
+                    <div class="timeline-content">
+                        <h3>美国俄克拉荷马州立大学</h3>
+                        <p>动物科学系 | 动物遗传专业</p>
+                        <p>获博士学位 | 研究方向：非编码RNA与衰老机制</p>
+                        <p>导师：Dr. David E. Hagen | 论文题目：《Circulating small non-coding RNAs as biomarkers of human aging》</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2013.09-2019.06</div>
+                    <div class="timeline-content">
+                        <h3>四川农业大学</h3>
+                        <p>动物科学-动物遗传育种与繁殖专业 | 本硕连读</p>
+                        <p>获硕士学位 | 研究方向：动物遗传与基因组学</p>
+                        <p>导师：仲涛&赵倩君 教授 | 论文题目：《山羊毛囊发育相关基因的筛选与功能验证》</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工作经历 -->
+        <section id="work">
+            <h2>工作经历</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023.02-2024.06</div>
+                    <div class="timeline-content">
+                        <h3>香港城市大学 | 生物医学系</h3>
+                        <p>博士后 | 从事衰老的表观遗传相关研究</p>
+                        <p>负责利用空间多组学技术构建解析小鼠大脑衰老模型，研究不同组学变化在神经退行性调控中的作用</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019.08-2021.12</div>
+                    <div class="timeline-content">
+                        <h3>美国俄克拉荷马州立大学 | 动物科学系</h3>
+                        <p>教学助理 | 研究领域：动物遗传学</p>
+                        <p>曾担任科研助理，负责分子遗传学实验设计与数据分析</p>
+                        <p>讲授《动物遗传学》课程，指导5名本科生的科研项目</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 专业技能 -->
+        <section id="skills">
+            <h2>专业技能</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-flask"></i> 本专业技能</h3>
+                    <ul>
+                        <li>NGS测序数据分析</li>
+                        <li>各类分子生物实验</li>
+                        <li>细胞培养及慢病毒载体构建</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> 计算机技能</h3>
+                    <ul>
+                        <li>熟练操作linux/shell及windows系统</li>
+                        <li>运用python进行测序数据分析的平台搭建</li>
+                        <li>机器学习建模；机器学习建模对生物大数据的靶标筛选</li>
+                        <li>熟练使用R进行结果可视化</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-language"></i> 语言能力</h3>
+                    <ul>
+                        <li>熟练掌握英语听、说、读、写能力（ILETS 6.5）</li>
+                        <li>能够独立撰写英文科研论文及项目申请书</li>
+                        <li>具备专业领域的中英互译能力</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 研究内容 -->
+        <section id="research">
+            <h2>研究内容</h2>
+            <ul class="research-list">
+                <li class="research-item">
+                    通过对单细胞转录组和空间转录组数据整合，分析脑部星形胶质细胞在衰老进程中糖原代谢的改变对神经退行性过程的影响
+                </li>
+                <li class="research-item">
+                    对衰老细胞的RNA-seq数据进行特征提取并探究富集的长链非编码RNA (lncRNAs)对细胞转录组及表型的影响
+                </li>
+                <li class="research-item">
+                    细胞外体液的小非编码RNA(sncRNAs)对人体老化的影响及与老化相关sncRNAs功能预测
+                </li>
+                <li class="research-item">
+                    色氨酸额外供给对低出生体重仔猪的葡萄糖、脂质代谢的恢复及转录组水平基因表达的变化
+                </li>
+                <li class="research-item">
+                    利用全基因组甲基化和对应转录组水平探究中卫山羊出生后毛发弯曲形态变化的机理
+                </li>
+                <li class="research-item">
+                    通过线粒体COX和ATP基因亚群探究国内外山羊品种的驯化过程
+                </li>
+            </ul>
+        </section>
+
+        <!-- 主要奖项&证书 -->
+        <section id="awards">
+            <h2>主要奖项&证书</h2>
+            <ul class="award-list">
+                <li class="award-item">
+                    <i class="fas fa-trophy"></i>
+                    <div>
+                        <strong>Women’s Faculty Council Student Research Awards</strong>, Oklahoma State University, 2022
+                    </div>
+                </li>
+                <li class="award-item">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <strong>生物信息学研究生证书</strong>, Department of Biochemistry and Molecular Biology, Oklahoma State University, 2022
+                    </div>
+                </li>
+                <li class="award-item">
+                    <i class="fas fa-medal"></i>
+                    <div>
+                        <strong>国际领导力项目</strong>, Oklahoma State University, 2019
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 学术会议 -->
+        <section id="conferences">
+            <h2>学术会议</h2>
+            <ul class="conference-list">
+                <li class="conference-item">
+                    <i class="fas fa-comments"></i>
+                    <div>
+                        RNA-seq reveals insights into molecular mechanism of metabolic restoration via tryptophan supplementation in low birthweight piglet model.<br>
+                        National Animal Genome Research Program (NRSP8) workshop. February 3rd, 2022
+                    </div>
+                </li>
+                <li class="conference-item">
+                    <i class="fas fa-comments"></i>
+                    <div>
+                        Identification of key metabolic mediators during dietary tryptophan supplementation in low birth weight pigs by RNA sequencing.<br>
+                        American Society of Animal Science-Canadian Society of Animal Science (ASAS-CSAS) annual meeting. July 14-18, 2021, Louisville, KY
+                    </div>
+                </li>
+                <li class="conference-item">
+                    <i class="fas fa-comments"></i>
+                    <div>
+                        Research in Key Biological Pathways and Genes Related to Hair Follicle Development of Zhongwei Goat Based on Transcriptome Analysis.<br>
+                        第十六次畜禽遗传标记会，2018，河南.洛阳
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 代表性论文 -->
+        <section id="publications">
+            <h2>代表性论文</h2>
+            <div class="publications">
+                <div class="publication">
+                    <p>1. Ma SL, <strong>Xiao P</strong> (共同一作), Wu ZH, Guo YL, Mai KS, Zhang WB. Multi-omics reveal the effect of different dietary plant protein sources on the microbiota-gut-digestive gland axis of abalone <i>Haliotis dicus hannai</i>. 2025. <em>Aquaculture</em>. 605 (2025) 742501.</p>
+                    <div class="pub-meta">(IF: 3.9, Q1) <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a></div>
+                </div>
+                <div class="publication">
+                    <p>2. Wang Y, <strong>Xiao P</strong> (共同一作), Zhang L. Proximity-based phospho-interactome (Prob-PhI) characterization reveals distinct signaling activities of MEK1 and MEK2. 2025. <em>Analytical Chemistry (under review)</em>. </p>
+                    <div class="pub-meta">(拟投) <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a></div>
+                </div>
+                <div class="publication">
+                    <p>3. Li YH, <strong>Xiao P</strong>, Boadu F, Goldkamp A.K, Nirgude S, Cheng JL, Hagen D.E, Kalish J.M, Rivera R.M. The counterpart congenital overgrowth syndromes BeckwithWiedemann Syndrome in human and large offspring syndrome in bovine involve alternations in DNA methylation, transcription, and chromatin configuration.</p>
+                    <div class="pub-meta">(medRxiv, Preprint. PMID: 38168424) <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a></div>
+                </div>
+                <div class="publication">
+                    <p>4. <strong>Xiao P</strong>, Shi ZY, Liu CA, and Hagen D.E. Characteristics of circulating small non coding RNAs in plasma and serum during human aging. 2023. <em>Aging Medicine</em>. 6(1):3548.</p>
+                    <div class="pub-meta">PMID: 36911092 (IF: 2.17, Q3) <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a></div>
+                </div>
+                <div class="publication">
+                    <p>5. Selvan M.T, Gunasekara S, <strong>Xiao P</strong>, Griffin K, Cowan S.R, Narayanan S,Ramachandran A, Hagen D.E, Ritchey J.W, Rudd J.M, Miller C.A. SARS CoV-2 (Delta variant) infection kinetics and immunopathogenesis in domestic cats. 2022. <em>Viruses</em>. 14(6), 1207.</p>
+                    <div class="pub-meta">PMID: 35746678 (IF: 5.818, Q1) <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a></div>
+                </div>
+                <div class="publication">
+                    <p>6. <strong>Xiao P</strong>, Goodarzi P, Pezeshki A, and Hagen D.E. RNA-seq reveals insights into molecular mechanisms of metabolic restoration via tryptophan supplementation in low birthweight piglet model. 2022. <em>Journal of Animal Science</em>. 100(5):skac156.</p>
+                    <div class="pub-meta">PMID: 35552417 (IF: 3.3, Q1) <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目主持情况 -->
+        <section id="projects">
+            <h2>科研项目</h2>
+            <div class="project-list">
+                <div class="project-item">
+                    <div class="project-date">2025.01.08-2027.01.08</div>
+                    <div class="project-title">云南省教育厅科学研究基金项目</div>
+                    <div class="project-desc">tsRNA在鸡产蛋时期的表达模式及其对产蛋性能的调控机制研究</div>
+                    <div class="project-funding">项目编号：2025J0634 | 经费：4万</div>
+                </div>
+                <div class="project-item">
+                    <div class="project-date">2025.07.01-2028.07.01</div>
+                    <div class="project-title">西南林业大学科研启动基金项目</div>
+                    <div class="project-desc">基于"肝-血-卵巢"轴探究小非编码RNA对产蛋性能的影响及其作用机制</div>
+                    <div class="project-funding">经费：10万</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70, // 调整偏移量以适应固定导航栏
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
